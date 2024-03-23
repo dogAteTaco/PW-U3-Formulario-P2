@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Se agrega temática dark a la página con boostrap -->
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Validación</title>
+    <!-- Agregar Bootstrap CSS -->
+	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Validación</h1>
+        <form id="formulario">
+            <div class="mb-3">
+                <label for="id">ID <span class="example">5 dígitos</span></label>
+                <input type="text" class="form-control" id="id" name="id">
+				<!-- Message doesn't display unless the input is invalid -->
+				<div class="invalid-feedback">
+					El Id debe contener únicamente dígitos y debe ser de una longitud de 5 caractéres.
+				</div>
+            </div>
+            <div class="mb-3">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+				<div class="invalid-feedback">
+					El campo de Nombre no puede estar vacío.
+				</div>
+            </div>
+            <div class="mb-3">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos">
+				<div class="invalid-feedback">
+					El campo de Apellido no puede estar vacío.
+				</div>
+            </div>
+            <div class="mb-3">
+                <label for="telefono">Teléfono <span class="example">Formato (###)###-####</span></label>
+                <input type="text" class="form-control" id="telefono" name="telefono">
+				<div class="invalid-feedback">
+					El campo de teléfono no puede estar vacío, no puede contener letras y debe estar en el siguiente formato: (###)###-####. Ejemplo: (686)-123-4567.
+				</div>
+            </div>
+            <div class="mb-3">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" name="correo">
+				<div class="invalid-feedback">
+					Correo electrónico no válido.
+				</div>
+            </div>
+            <div class="mb-3">
+                <label for="edad">Edad (Número positivo)</label>
+                <input type="text" class="form-control" id="edad" name="edad">
+				<div class="invalid-feedback">
+					El campo de edad no puede contener letras, espacios o ser un número negativo.
+				</div>
+            </div>
+            <div class="mb-3">
+                <label for="fechaNacimiento">Fecha de Nacimiento (AAAA-MM-DD)</label>
+                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+				<div class="invalid-feedback">
+					Fecha de Nacimiento no válida.
+				</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <div id="mensajeEnvio" class="alert alert-success"></div>
+    </div>
+</body>
+</html>
