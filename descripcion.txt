@@ -1,0 +1,92 @@
+Problema a desarrollar: Modificar la Práctica 2: Formularios validados con JS anterior para que al presionar el botón se abra una segunda página HTML donde se vayan listando cada uno de los envíos en forma de tabla.
+
+Paso 1: Crea la segunda página HTML
+
+Crea una segunda página HTML llamada resultados.html que mostrará la lista de envíos en forma de tabla. La estructura básica podría ser la siguiente (De formato con CSS o Bootstrap):
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Envíos</title>
+</head>
+<body>
+    <h1>Resultados de Envíos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Edad</th>
+                <th>Fecha de Nacimiento</th>
+            </tr>
+        </thead>
+        <tbody id="tablaResultados">
+            <!-- Aquí se agregarán las filas de la tabla con los resultados -->
+        </tbody>
+    </table>
+</body>
+</html>
+Paso 2: Modifica el código JavaScript para redireccionar a la segunda página
+
+En el archivo "script.js" que utilizaste en la página de formulario, después de realizar las validaciones y recopilar los datos (en la función addEventListener), puedes almacenar los datos en un arreglo o en el almacenamiento local del navegador y luego redireccionar a la página de resultados utilizando JavaScript. Aquí tienes un ejemplo de cómo hacerlo:
+
+// Crear un objeto con los datos del envío
+        const envio = {
+            id,
+            nombre,
+            apellidos,
+            telefono,
+            correo,
+            edad,
+            fechaNacimiento
+        };
+         // Obtener o inicializar un arreglo de envíos (puedes usar el almacenamiento local para mantener los envíos)
+        const envios = JSON.parse(localStorage.getItem("envios")) || [];
+         // Agregar el nuevo envío al arreglo
+        envios.push(envio);
+         // Guardar el arreglo actualizado en el almacenamiento local
+        localStorage.setItem("envios", JSON.stringify(envios));
+         // Redireccionar a la página de resultados
+        window.location.href = "resultados.html";
+Paso 3: Recupera y muestra los envíos en la página de resultados
+
+En la página "resultados.html," puedes utilizar JavaScript. Genere un archivo llamado scriptResultados.js para recuperar los envíos almacenados en el almacenamiento local y mostrarlos en la tabla. Aquí tienes un ejemplo de cómo hacerlo:
+
+// scriptResultados.js (en la página "resultados.html")
+document.addEventListener("DOMContentLoaded", function() {
+    const tablaResultados = document.getElementById("tablaResultados");
+      // Obtener los envíos almacenados en el almacenamiento local
+    const envios = JSON.parse(localStorage.getItem("envios")) || [];
+     // Recorrer los envíos y agregar filas a la tabla
+    envios.forEach((envio) => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${envio.id}</td>
+            <td>${envio.nombre}</td>
+            <td>${envio.apellidos}</td>
+            <td>${envio.telefono}</td>
+            <td>${envio.correo}</td>
+            <td>${envio.edad}</td>
+            <td>${envio.fechaNacimiento}</td>
+        `;
+        tablaResultados.appendChild(fila);
+    });
+});
+Asegúrate de vincular el archivo "scriptResultados.js" en la página "resultados.html" y de que el código se ejecute después de que el contenido esté completamente cargado.
+
+Paso 4: Análisis
+
+Explique los arreglos en JavaScript
+Explique el almacenamiento del navegador (sessionStorage y localStorage) indique ventajas y desventajas, capacidad de almacenamiento y como accederlo utilizando java script (como almacenar, recuperar y eliminar datos)
+¿Qué es JSON?
+¿Qué hacen las funciones JSON.parse() y JSON.stringify() ?
+¿Cómo funciona window.location.href ?
+Explique el funcionamiento de scriptResultados.js
+Agregue un botón que borre completamente la tabla de capturas 
+Envíe el proyecto en un archivo comprimido deben contener las 3 variantes
+Envíe la liga de github
